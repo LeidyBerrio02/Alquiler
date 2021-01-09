@@ -1,9 +1,11 @@
 package com.ProyectoAlquiler.demo.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
-	@Entity (name="tipoProducto")
-	@Table(name="tipoProducto")
+	@Entity (name="tipoproducto")
+	@Table(name="tipoproducto")
 	public class TipoProducto {
 		
 		@Id
@@ -13,6 +15,9 @@ import javax.persistence.*;
 		@Column(name="tipoProducto")
 		private String tipoProducto;
 
+		@OneToMany(mappedBy = "idTipoProducto", fetch = FetchType.EAGER)
+		private List<Producto> producto;
+		
 		public Long getIdTipoProducto() {
 			return idTipoProducto;
 		}
@@ -27,6 +32,14 @@ import javax.persistence.*;
 
 		public void setTipoProducto(String tipoProducto) {
 			this.tipoProducto = tipoProducto;
+		}
+
+		public List<Producto> getProducto() {
+			return producto;
+		}
+
+		public void setProducto(List<Producto> producto) {
+			this.producto = producto;
 		}
 	
 		

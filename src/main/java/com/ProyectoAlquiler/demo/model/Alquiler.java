@@ -3,34 +3,39 @@ package com.ProyectoAlquiler.demo.model;
 import java.util.Date;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity(name="alquiler")
 @Table(name="alquiler")
 public class Alquiler {
-
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idAlquiler")
-	private Long idAlquiler;
+	@Column(name="idalquiler")
+	private Long idalquiler;
 	
-	@Column(name="fechaAlquiler")
+	@Column(name="fechaalquiler")
 	private Date fechaAlquiler;
 	
-	@Column(name="fechaEntrega")
+	@Column(name="fechaentrega")
 	private Date fechaEntrega;
 	
-	@Column(name="idPersona")
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="persona_idpersona")
 	private Persona idPersona;
 	
-	@Column(name="idNovedad")
-	private Novedad idNovedad;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idnovedad")
+	private Novedad idnovedad;
 	
 	public Long getIdAlquiler() {
-		return idAlquiler;
+		return idalquiler;
 	}
 
 	public void setIdAlquiler(Long idAlquiler) {
-		this.idAlquiler = idAlquiler;
+		this.idalquiler = idAlquiler;
 	}
 
 	public Date getFechaAlquiler() {
@@ -49,20 +54,22 @@ public class Alquiler {
 		this.fechaEntrega = fechaEntrega;
 	}
 
-	public Persona getIdPersona() {
+	
+	
+	public Persona getPersona() {
 		return idPersona;
 	}
 
-	public void setIdPersona(Persona idPersona) {
-		this.idPersona = idPersona;
+	public void setPersona(Persona persona) {
+		this.idPersona = persona;
 	}
 
 	public Novedad getIdNovedad() {
-		return idNovedad;
+		return idnovedad;
 	}
 
 	public void setIdNovedad(Novedad idNovedad) {
-		this.idNovedad = idNovedad;
+		this.idnovedad = idNovedad;
 	}
 
 

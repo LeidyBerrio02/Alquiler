@@ -1,6 +1,10 @@
 package com.ProyectoAlquiler.demo.model;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity (name="persona")
 @Table(name="persona")
@@ -8,7 +12,7 @@ public class Persona {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long idPersona;
+	private Long idpersona;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -22,21 +26,28 @@ public class Persona {
 	@Column(name="direccion")
 	private String direccion;
 	
-	@Column(name="idTipoDocumento")
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="tipodocumento_idtipodocumento")
 	private TipoDocumento idTipoDocumento;
 	
-	@Column(name="numeroDocumento")
+	@Column(name="numerodocumento")
 	private String numeroDocumento;
 	
-	@Column(name="idTipoPersona")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="tipopersona_idtipopersona")
 	private TipoPersona idTipoPersona;
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "idPersona")
+	private List<Alquiler> alquiler;
 
 	public Long getIdPersona() {
-		return idPersona;
+		return idpersona;
 	}
 
 	public void setIdPersona(Long idPersona) {
-		this.idPersona = idPersona;
+		this.idpersona = idPersona;
 	}
 
 	public String getNombre() {
@@ -93,6 +104,14 @@ public class Persona {
 
 	public void setIdTipoPersona(TipoPersona idTipoPersona) {
 		this.idTipoPersona = idTipoPersona;
+	}
+
+	public List<Alquiler> getAlquiler() {
+		return alquiler;
+	}
+
+	public void setAlquiler(List<Alquiler> alquiler) {
+		this.alquiler = alquiler;
 	}
 	
 	

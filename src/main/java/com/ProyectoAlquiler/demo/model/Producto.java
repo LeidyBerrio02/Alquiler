@@ -15,7 +15,8 @@ public class Producto {
 	@Column(name="nombre")
 	private String nombre;
 	
-	@Column (name="idTipoProducto")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idTipoProducto")
 	private TipoProducto idTipoProducto;
 	
 	@Column(name="fechaEstreno")
@@ -23,6 +24,9 @@ public class Producto {
 	
 	@Column(name="compositor")
 	private String compositor;
+	
+	/**@ManyToOne(fetch = FetchType.LAZY)
+	private DetalleAlquiler detalleAlquiler;*/
 
 	public long getIdProducto() {
 		return idProducto;

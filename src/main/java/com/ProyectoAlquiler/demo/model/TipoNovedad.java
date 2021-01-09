@@ -1,31 +1,55 @@
 package com.ProyectoAlquiler.demo.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
-@Entity (name="tipoNovedad")
-@Table(name="tipoNovedad")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity (name="tiponovedad")
+@Table(name="tiponovedad")
 public class TipoNovedad {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
-	private Long idTipoNovedad;
+	private Long idtiponovedad;
 
-	@Column(name="novedad")
-	private String novedad;
+	@Column(name="novedadN")
+	private String novedadN;
 
-	public Long getIdTipoNovedad() {
-		return idTipoNovedad;
+	@JsonIgnore
+	@OneToMany(mappedBy = "idtiponovedad" ,fetch = FetchType.EAGER)
+	private List<Novedad> novedad;
+
+	public Long getIdtiponovedad() {
+		return idtiponovedad;
 	}
 
-	public void setIdTipoNovedad(Long idTipoNovedad) {
-		this.idTipoNovedad = idTipoNovedad;
+	public void setIdtiponovedad(Long idtiponovedad) {
+		this.idtiponovedad = idtiponovedad;
 	}
 
-	public String getNovedad() {
+	public void setNovedadN(String novedadN) {
+		this.novedadN = novedadN;
+	}
+
+	public void setNovedad(List<Novedad> novedad) {
+		this.novedad = novedad;
+	}
+
+	public String getNovedadN() {
+		return novedadN;
+	}
+
+	public void setNovedad(String novedadN) {
+		this.novedadN = novedadN;
+	}
+
+	public List<Novedad> getNovedad() {
 		return novedad;
 	}
 
-	public void setNovedad(String novedad) {
+	public void setNovedadd(List<Novedad> novedad) {
 		this.novedad = novedad;
 	}
 	
