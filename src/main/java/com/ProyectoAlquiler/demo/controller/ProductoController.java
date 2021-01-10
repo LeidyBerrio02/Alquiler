@@ -5,35 +5,36 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ProyectoAlquiler.demo.model.Alquiler;
-import com.ProyectoAlquiler.demo.service.AlquilerService;
+import com.ProyectoAlquiler.demo.model.Producto;
+import com.ProyectoAlquiler.demo.service.ProductoService;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @RestController
-@RequestMapping("/Alquiler")
-public class AlquilerController {
-	
+@RequestMapping("/Producto")
+public class ProductoController {
+
 	@Autowired
-	private AlquilerService alquilerService;
+	public ProductoService productoService;
 	
 	@GetMapping()
-	public List<Alquiler> listar(){
-		return alquilerService.listar();
+	public List<Producto> listar(){
+		return productoService.listarProd();
 	}
 	
 	@PostMapping("/crear")
-	public Alquiler crear(@RequestBody Alquiler alquiler) {
-		return alquilerService.crear(alquiler);
+	public Producto crear(@RequestBody Producto producto) {
+		return productoService.crear(producto);
 	}
 	
-	@DeleteMapping("/eliminar/")
-	public Boolean eliminar(@PathVariable Long idAlquiler) {
-		return alquilerService.eliminar(idAlquiler);
+	@DeleteMapping("/eliminar")
+	public Boolean eliminar(Long idProducto) {
+		return productoService.eliminar(idProducto);
 	}
-
+	
+	
 }

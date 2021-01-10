@@ -12,7 +12,8 @@ public class Persona {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long idpersona;
+	@Column(name="idpersona")
+	private Long idPersona;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -34,20 +35,21 @@ public class Persona {
 	@Column(name="numerodocumento")
 	private String numeroDocumento;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="tipopersona_idtipopersona")
-	private TipoPersona idTipoPersona;
+	private TipoPersona tipopersona_idtipopersona;
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "idPersona")
 	private List<Alquiler> alquiler;
 
 	public Long getIdPersona() {
-		return idpersona;
+		return idPersona;
 	}
 
 	public void setIdPersona(Long idPersona) {
-		this.idpersona = idPersona;
+		this.idPersona = idPersona;
 	}
 
 	public String getNombre() {
@@ -98,12 +100,12 @@ public class Persona {
 		this.numeroDocumento = numeroDocumento;
 	}
 
-	public TipoPersona getIdTipoPersona() {
-		return idTipoPersona;
+	public TipoPersona getTipopersona_idtipopersona() {
+		return tipopersona_idtipopersona;
 	}
 
-	public void setIdTipoPersona(TipoPersona idTipoPersona) {
-		this.idTipoPersona = idTipoPersona;
+	public void setTipopersona_idtipopersona(TipoPersona tipopersona_idtipopersona) {
+		this.tipopersona_idtipopersona = tipopersona_idtipopersona;
 	}
 
 	public List<Alquiler> getAlquiler() {
@@ -113,6 +115,7 @@ public class Persona {
 	public void setAlquiler(List<Alquiler> alquiler) {
 		this.alquiler = alquiler;
 	}
+
 	
 	
 	

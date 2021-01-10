@@ -21,12 +21,12 @@ public class Alquiler {
 	private Date fechaEntrega;
 	
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="persona_idpersona")
 	private Persona idPersona;
 	
-
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idnovedad")
 	private Novedad idnovedad;
 	

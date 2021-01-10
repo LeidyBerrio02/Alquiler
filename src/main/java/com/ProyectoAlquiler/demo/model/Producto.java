@@ -1,8 +1,10 @@
 package com.ProyectoAlquiler.demo.model;
 
-import java.util.Date;
+import java.util.Date;	
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="producto")
 @Table (name="producto")
@@ -10,16 +12,18 @@ public class Producto {
 	
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY)
+	@Column(name="idproducto")
 	private long idProducto;
 	
 	@Column(name="nombre")
 	private String nombre;
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="idTipoProducto")
-	private TipoProducto idTipoProducto;
+	@JoinColumn(name="idtipoproducto")
+	private TipoProducto idtipoproducto;
 	
-	@Column(name="fechaEstreno")
+	@Column(name="fechaestreno")
 	private Date fechaEstreno;
 	
 	@Column(name="compositor")
@@ -44,12 +48,13 @@ public class Producto {
 		this.nombre = nombre;
 
 	}
-	public TipoProducto getIdTipoProducto() {
-		return idTipoProducto;
+	
+	public TipoProducto getIdtipoproducto() {
+		return idtipoproducto;
 	}
 
-	public void setIdTipoProducto(TipoProducto idTipoProducto) {
-		this.idTipoProducto = idTipoProducto;
+	public void setIdtipoproducto(TipoProducto idtipoproducto) {
+		this.idtipoproducto = idtipoproducto;
 	}
 
 	public Date getFechaEstreno() {

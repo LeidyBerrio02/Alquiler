@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity (name="tipodocumento")
 @Table(name="tipodocumento")
 public class TipoDocumento {
@@ -15,6 +17,7 @@ public class TipoDocumento {
 	@Column(name="tipodocumento")
 	private String TipoDocumento;
 
+	@JsonIgnore
 	@OneToMany(mappedBy ="idTipoDocumento", fetch = FetchType.EAGER)
 	private List<Persona> persona;
 

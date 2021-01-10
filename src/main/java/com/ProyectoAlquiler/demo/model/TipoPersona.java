@@ -19,9 +19,9 @@ public class TipoPersona {
 		@Column(name="tipopersona")
 		private String TipoPersona;
 
-		@JsonIgnore
-		@OneToMany(mappedBy = "idTipoPersona", fetch = FetchType.EAGER)
-		private List<Persona> persona;
+		/*@JsonIgnore
+		@OneToMany(mappedBy = "tipopersona_idtipopersona", fetch = FetchType.EAGER)
+		private List<Persona> persona;*/
 		
 		public Long getIdTipoPersona() {
 			return idTipoPersona;

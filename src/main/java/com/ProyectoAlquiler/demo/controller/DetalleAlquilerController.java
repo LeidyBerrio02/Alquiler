@@ -7,20 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ProyectoAlquiler.demo.model.Novedad;
-import com.ProyectoAlquiler.demo.service.NovedadService;
+import com.ProyectoAlquiler.demo.model.DetalleAlquiler;
+import com.ProyectoAlquiler.demo.service.DetalleAlquilerService;
 
 @RestController
-@RequestMapping("/Novedad")
-public class NovedadController {
-	
+@RequestMapping("/Detalle")
+public class DetalleAlquilerController {
+
 	@Autowired
-	private NovedadService novedadService;
+	private DetalleAlquilerService detalleAlquilerService;
 	
 	@GetMapping()
-	public List<Novedad> listar(){
-		return novedadService.listar();
+	public List<DetalleAlquiler> listar(){
+		return detalleAlquilerService.listarDetalle();
 	}
-	
-
 }

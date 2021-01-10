@@ -7,19 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ProyectoAlquiler.demo.model.Novedad;
-import com.ProyectoAlquiler.demo.service.NovedadService;
+import com.ProyectoAlquiler.demo.model.TipoProducto;
+import com.ProyectoAlquiler.demo.service.TipoProductoService;
 
 @RestController
-@RequestMapping("/Novedad")
-public class NovedadController {
+@RequestMapping("/tipoProducto")
+public class TipoProductoController {
 	
+	//Inyeccion de dependencias
 	@Autowired
-	private NovedadService novedadService;
+	private TipoProductoService tipoProductoService;
 	
-	@GetMapping()
-	public List<Novedad> listar(){
-		return novedadService.listar();
+	@GetMapping
+	public List<TipoProducto> listar(){
+		return tipoProductoService.listar();
 	}
 	
 

@@ -1,4 +1,4 @@
-/**package com.ProyectoAlquiler.demo.model;
+package com.ProyectoAlquiler.demo.model;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table( name ="detalleAlquiler")
 public class DetalleAlquiler {
 	
-	@OneToOne()
+	@OneToMany()
 	@JoinColumn(name="Alquiler_idAlquiler")
 	private Long Alquiler_idAlquiler;
 	
@@ -42,8 +42,5 @@ public class DetalleAlquiler {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-
-	
 	
 }
-**/

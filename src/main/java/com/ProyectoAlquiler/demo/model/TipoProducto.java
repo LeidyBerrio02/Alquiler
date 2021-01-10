@@ -4,18 +4,22 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 	@Entity (name="tipoproducto")
 	@Table(name="tipoproducto")
 	public class TipoProducto {
 		
 		@Id
 		@GeneratedValue( strategy = GenerationType.IDENTITY)
+		@Column(name="idtipoproducto")
 		private Long idTipoProducto;
 
-		@Column(name="tipoProducto")
+		@Column(name="tipoproducto")
 		private String tipoProducto;
 
-		@OneToMany(mappedBy = "idTipoProducto", fetch = FetchType.EAGER)
+		@JsonIgnore
+		@OneToMany(mappedBy = "idtipoproducto", fetch = FetchType.EAGER)
 		private List<Producto> producto;
 		
 		public Long getIdTipoProducto() {

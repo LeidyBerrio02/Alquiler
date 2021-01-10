@@ -14,15 +14,15 @@ public class Novedad {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idnovedad;
 	
-	//@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idtiponovedad")
 	private TipoNovedad idtiponovedad;
 	
 	@Column(name="descripcion")
 	private String descripcion;
 	
-	//@JsonIgnore
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idnovedad")
 	private List<Alquiler> alquiler;
 
