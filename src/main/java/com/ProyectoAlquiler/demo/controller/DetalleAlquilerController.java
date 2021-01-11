@@ -15,10 +15,11 @@ import com.ProyectoAlquiler.demo.service.DetalleAlquilerService;
 public class DetalleAlquilerController {
 
 	@Autowired
-	private DetalleAlquilerService detalleAlquilerService;
+	public DetalleAlquilerService detalleAlquilerService;
 	
 	@GetMapping()
-	public List<DetalleAlquiler> listar(){
-		return detalleAlquilerService.listarDetalle();
+	public List<DetalleAlquiler> listarD(){
+		return detalleAlquilerService.listar();
 	}
+	
 }

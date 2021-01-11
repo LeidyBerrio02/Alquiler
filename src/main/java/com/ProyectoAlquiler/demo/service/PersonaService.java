@@ -6,9 +6,8 @@ import com.ProyectoAlquiler.demo.model.Persona;
 
 public interface PersonaService {
 
-	List<Persona> listarPer();
+	List<Persona> listar();
 	Persona crear(Persona persona);
-	//Persona actualizar(Persona persona, Long idPersona);
 	Boolean eliminar(Long idPersona);
 	
 }

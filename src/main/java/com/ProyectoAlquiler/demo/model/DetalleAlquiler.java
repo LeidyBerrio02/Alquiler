@@ -1,46 +1,62 @@
 package com.ProyectoAlquiler.demo.model;
 
-import java.util.List;
-
 import javax.persistence.*;
 
-@Entity(name="detalleAlquiler")
-@Table( name ="detalleAlquiler")
+@Entity(name="detallealquiler")
+@Table( name ="detallealquiler")
 public class DetalleAlquiler {
 	
-	@OneToMany()
-	@JoinColumn(name="Alquiler_idAlquiler")
-	private Long Alquiler_idAlquiler;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="iddetallealquiler")
+	private Long idDetalleAlquiler;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name="Canciones_idCanciones")
-	private List<Producto> idProducto;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="alquiler_idalquiler")
+	private Alquiler alquiler;
 	
-	@Column (name="cantidad")
-	private int cantidad;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="producto_idproducto")
+	private Producto producto;
+	
+	@Column (name="total")
+	private Double total;
 
-	public Long getAlquiler_idAlquiler() {
-		return Alquiler_idAlquiler;
+	
+
+	public Long getIdDetalleAlquiler() {
+		return idDetalleAlquiler;
 	}
 
-	public void setAlquiler_idAlquiler(Long alquiler_idAlquiler) {
-		Alquiler_idAlquiler = alquiler_idAlquiler;
+	public void setIdDetalleAlquiler(Long idDetalleAlquiler) {
+		this.idDetalleAlquiler = idDetalleAlquiler;
 	}
 
-	public List<Producto> getIdProducto() {
-		return idProducto;
+	public Alquiler getAlquiler() {
+		return alquiler;
 	}
 
-	public void setIdProducto(List<Producto> idProducto) {
-		this.idProducto = idProducto;
+	public void setAlquiler(Alquiler alquiler) {
+		this.alquiler = alquiler;
 	}
 
-	public int getCantidad() {
-		return cantidad;
+
+
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
 	
 }

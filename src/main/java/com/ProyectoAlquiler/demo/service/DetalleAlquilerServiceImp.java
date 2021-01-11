@@ -14,9 +14,10 @@ public class DetalleAlquilerServiceImp implements DetalleAlquilerService {
 	@Autowired
 	private DetalleAlquilerRepository detalleAlquilerRepository;
 	
-	 @Override
-	 public List<DetalleAlquiler> listarDetalle(){
-		 return detalleAlquilerRepository.findAll();
-	 }
-	
+	@Override
+	public List<DetalleAlquiler> listar() {
+		// TODO Auto-generated method stub
+		return detalleAlquilerRepository.findAll();
+	}
+
 }

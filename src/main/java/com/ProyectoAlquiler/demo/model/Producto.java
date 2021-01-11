@@ -1,11 +1,16 @@
 package com.ProyectoAlquiler.demo.model;
 
-import java.util.Date;	
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * @author leidy
+ *
+ */
 @Entity(name="producto")
 @Table (name="producto")
 public class Producto {
@@ -29,8 +34,9 @@ public class Producto {
 	@Column(name="compositor")
 	private String compositor;
 	
-	/**@ManyToOne(fetch = FetchType.LAZY)
-	private DetalleAlquiler detalleAlquiler;*/
+	@JsonIgnore
+	@OneToMany(mappedBy = "producto")
+    private List<DetalleAlquiler> producto;
 
 	public long getIdProducto() {
 		return idProducto;
@@ -46,9 +52,8 @@ public class Producto {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-
 	}
-	
+
 	public TipoProducto getIdtipoproducto() {
 		return idtipoproducto;
 	}
@@ -72,6 +77,19 @@ public class Producto {
 	public void setCompositor(String compositor) {
 		this.compositor = compositor;
 	}
+
+	public List<DetalleAlquiler> getProducto() {
+		return producto;
+	}
+
+	public void setProducto(List<DetalleAlquiler> producto) {
+		this.producto = producto;
+	}
+		
+	
+	/**@ManyToOne(fetch = FetchType.LAZY)
+	private DetalleAlquiler detalleAlquiler;*/
+
 	
 	
 

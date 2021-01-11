@@ -1,6 +1,7 @@
 package com.ProyectoAlquiler.demo.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -30,12 +31,16 @@ public class Alquiler {
 	@JoinColumn(name="idnovedad")
 	private Novedad idnovedad;
 	
-	public Long getIdAlquiler() {
+	@JsonIgnore
+	@OneToMany(mappedBy = "alquiler")
+    private List<DetalleAlquiler> idDteAlquiler;
+
+	public Long getIdalquiler() {
 		return idalquiler;
 	}
 
-	public void setIdAlquiler(Long idAlquiler) {
-		this.idalquiler = idAlquiler;
+	public void setIdalquiler(Long idalquiler) {
+		this.idalquiler = idalquiler;
 	}
 
 	public Date getFechaAlquiler() {
@@ -54,26 +59,28 @@ public class Alquiler {
 		this.fechaEntrega = fechaEntrega;
 	}
 
-	
-	
-	public Persona getPersona() {
+	public Persona getIdPersona() {
 		return idPersona;
 	}
 
-	public void setPersona(Persona persona) {
-		this.idPersona = persona;
+	public void setIdPersona(Persona idPersona) {
+		this.idPersona = idPersona;
 	}
 
-	public Novedad getIdNovedad() {
+	public Novedad getIdnovedad() {
 		return idnovedad;
 	}
 
-	public void setIdNovedad(Novedad idNovedad) {
-		this.idnovedad = idNovedad;
+	public void setIdnovedad(Novedad idnovedad) {
+		this.idnovedad = idnovedad;
 	}
 
+	public List<DetalleAlquiler> getIdDteAlquiler() {
+		return idDteAlquiler;
+	}
 
-	
-	
-	
+	public void setIdDteAlquiler(List<DetalleAlquiler> idDteAlquiler) {
+		this.idDteAlquiler = idDteAlquiler;
+	}
+		
 }

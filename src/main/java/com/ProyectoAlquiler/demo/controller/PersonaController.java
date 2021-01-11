@@ -2,6 +2,7 @@ package com.ProyectoAlquiler.demo.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,11 +17,12 @@ import com.ProyectoAlquiler.demo.service.PersonaService;
 public class PersonaController {
 
 	//inyeccion de dependencias
+	@Autowired
 	public PersonaService personaService;
 	
 	@GetMapping()
 	public List<Persona> listar(){
-		return personaService.listarPer();
+		return personaService.listar();
 	}
 	
 	@PostMapping("crear")
