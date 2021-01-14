@@ -37,6 +37,9 @@ public class Producto {
 	@JsonIgnore
 	@OneToMany(mappedBy = "producto")
     private List<DetalleAlquiler> producto;
+	
+	@Column(name="precio")
+	private Double precio;
 
 	public long getIdProducto() {
 		return idProducto;
@@ -85,12 +88,18 @@ public class Producto {
 	public void setProducto(List<DetalleAlquiler> producto) {
 		this.producto = producto;
 	}
-		
+
+	public Double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+	
+	
 	
 	/**@ManyToOne(fetch = FetchType.LAZY)
 	private DetalleAlquiler detalleAlquiler;*/
-
-	
-	
 
 }

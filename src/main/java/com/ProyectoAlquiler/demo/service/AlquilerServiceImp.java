@@ -35,4 +35,19 @@ public class AlquilerServiceImp implements AlquilerService {
 		return false;
 	}
 
+	@Override
+	public Alquiler actualizar(Alquiler alquiler, Long idAlquiler) {
+		
+		Alquiler alquilerBD = alquilerRepository.findById(idAlquiler).orElse(null);
+		if	(alquiler != null) {
+			alquilerBD.setFechaAlquiler(alquiler.getFechaAlquiler());
+			alquilerBD.setFechaEntrega(alquiler.getFechaEntrega());
+			alquilerBD.setIdnovedad(alquiler.getIdnovedad());
+			alquilerBD.setIdPersona(alquiler.getIdPersona());
+			
+		}
+		
+		return alquilerRepository.save(alquilerBD);
+	}
+
 }

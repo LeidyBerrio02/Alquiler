@@ -29,7 +29,12 @@ public class TipoDocumentoServiceImp implements TipoDocumentoService {
 	@Override
 	public TipoDocumento actualizar(TipoDocumento tipoDocumento, Long idTipoDocumento) {
 		
-		return null;
+		TipoDocumento tipoDocumentoBD = tipoDocumentoRepository.findById(idTipoDocumento).orElse(null);
+		if(tipoDocumento != null) {
+			tipoDocumentoBD.setTipoDocumento(tipoDocumento.getTipoDocumento());
+		}
+		
+		return tipoDocumentoRepository.save(tipoDocumentoBD);
 	}
 
 	@Override

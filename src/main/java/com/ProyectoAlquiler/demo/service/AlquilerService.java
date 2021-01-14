@@ -8,6 +8,7 @@ public interface AlquilerService {
 
 	List<Alquiler> listar();
 	Alquiler crear(Alquiler alquiler);
+	Alquiler actualizar(Alquiler alquiler,Long idAlquiler);
 	Boolean eliminar(Long idAlquiler);
 	
 }

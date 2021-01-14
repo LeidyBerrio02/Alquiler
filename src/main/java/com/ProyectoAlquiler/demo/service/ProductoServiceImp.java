@@ -38,6 +38,21 @@ public class ProductoServiceImp  implements ProductoService{
 		return false;
 	}
 
+	@Override
+	public Producto actualizar(Producto producto, Long idProducto) {
+	
+		Producto productoBD = productoRepository.findById(idProducto).orElse(null);
+		if(producto != null) {
+			productoBD.setCompositor(producto.getCompositor());
+			productoBD.setFechaEstreno(producto.getFechaEstreno());
+			productoBD.setIdtipoproducto(producto.getIdtipoproducto());
+			productoBD.setNombre(producto.getNombre());
+			productoBD.setPrecio(producto.getPrecio());
+		}
+		
+		return productoRepository.save(productoBD);
+	}
+
 	
 	
 }

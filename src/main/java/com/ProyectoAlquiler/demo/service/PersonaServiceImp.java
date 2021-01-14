@@ -35,4 +35,22 @@ public class PersonaServiceImp implements PersonaService {
 		return false;
 	}
 
+	@Override
+	public Persona actualizar(Persona persona, Long idPersona) {
+		
+		Persona personaBD = personaRepository.findById(idPersona).orElse(null);
+		
+		if(persona != null) {
+			personaBD.setApellido(persona.getApellido());
+			personaBD.setDireccion(persona.getDireccion());
+			personaBD.setEmail(persona.getEmail());
+			personaBD.setIdTipoDocumento(persona.getIdTipoDocumento());
+			personaBD.setNombre(persona.getNombre());
+			personaBD.setNumeroDocumento(persona.getNumeroDocumento());
+			personaBD.setTipopersona_idtipopersona(persona.getTipopersona_idtipopersona());
+		}
+		
+		return personaRepository.save(personaBD);
+	}
+
 }

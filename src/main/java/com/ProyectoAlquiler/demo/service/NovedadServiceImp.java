@@ -24,16 +24,16 @@ public class NovedadServiceImp implements NovedadService{
 		return novedadRespository.save(novedad);
 	}
 
-	/*@Override
+	@Override
 	public Novedad actualizar(Novedad novedad, Long idNovedad) {
-		Novedad novedadBD = novedadRespository.FindById(idNovedad).orElse(null);
+		Novedad novedadBD = novedadRespository.findById(idNovedad).orElse(null);
 		if(novedad != null) {
 			novedadBD.setDescripcion(novedad.getDescripcion());
 			novedadBD.setIdTipoNovedad(novedad.getIdTipoNovedad());
 		}
 		
 		return novedadRespository.save(novedadBD);
-	}*/
+	}
 
 	@Override
 	public Boolean eliminar(Long idNovedad) {
