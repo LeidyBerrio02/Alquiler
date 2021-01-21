@@ -26,19 +26,21 @@ public class Novedad {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idnovedad")
 	private List<Alquiler> alquiler;
 
-	public Long getIdNovedad() {
+	
+	
+	public Long getIdnovedad() {
 		return idnovedad;
 	}
 
-	public void setIdNovedad(Long idNovedad) {
-		this.idnovedad = idNovedad;
+	public void setIdnovedad(Long idnovedad) {
+		this.idnovedad = idnovedad;
 	}
 
-	public TipoNovedad getIdTipoNovedad() {
+	public TipoNovedad getIdtiponovedad() {
 		return idtiponovedad;
 	}
 
-	public void setIdTipoNovedad(TipoNovedad idtiponovedad) {
+	public void setIdtiponovedad(TipoNovedad idtiponovedad) {
 		this.idtiponovedad = idtiponovedad;
 	}
 

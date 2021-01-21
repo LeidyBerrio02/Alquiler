@@ -82,5 +82,5 @@ public class Alquiler {
 	public void setIdDteAlquiler(List<DetalleAlquiler> idDteAlquiler) {
 		this.idDteAlquiler = idDteAlquiler;
 	}
-		
+
 }

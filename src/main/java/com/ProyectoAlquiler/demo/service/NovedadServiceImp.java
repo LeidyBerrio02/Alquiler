@@ -29,7 +29,7 @@ public class NovedadServiceImp implements NovedadService{
 		Novedad novedadBD = novedadRespository.findById(idNovedad).orElse(null);
 		if(novedad != null) {
 			novedadBD.setDescripcion(novedad.getDescripcion());
-			novedadBD.setIdTipoNovedad(novedad.getIdTipoNovedad());
+			novedadBD.setIdtiponovedad(novedad.getIdtiponovedad());
 		}
 		
 		return novedadRespository.save(novedadBD);

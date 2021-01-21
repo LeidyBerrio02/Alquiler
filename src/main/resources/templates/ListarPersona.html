@@ -36,7 +36,7 @@
 	<td th:text="${var.direccion}">
 	
 	<td>
-	<th:block th:each="tipoDoc,iter: ${var.idTipoDocumento}">
+	<th:block th:each="tipoDoc: ${var.idTipoDocumento}">
 	<label th:text="${tipoDoc.TipoDocumento}"></label>
 	</th:block>
 	</td>
