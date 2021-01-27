@@ -1,6 +1,6 @@
 package com.ProyectoAlquiler.demo.controller;
 
-import java.util.List;			
+import java.util.List;				
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,18 +14,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ProyectoAlquiler.demo.model.TipoPersona;
 import com.ProyectoAlquiler.demo.service.TipoPersonaService;
-
 @Controller
-@RequestMapping("/tipoPersona")
+@RequestMapping("/TipoPersona")
 public class TipoPersonaController {
 	
 	@Autowired
 	private TipoPersonaService tipoPersonaService;
 	
+	
 	@GetMapping()
+	public String mostrar(Model modelo) {
+		List<TipoPersona> tp = tipoPersonaService.listarPer();
+		modelo.addAttribute("listaTipoPersona", tp);
+		return "ListarTipoPersona";
+	}
+	
+	/*@GetMapping()
 	public List<TipoPersona> listar(){
 		return tipoPersonaService.listarPer();
-	}
+	}*/
 	
 	@PostMapping("crear")
 	public TipoPersona crear(@RequestBody TipoPersona tipoPersona) {

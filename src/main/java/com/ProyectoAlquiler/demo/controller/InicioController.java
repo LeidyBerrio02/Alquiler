@@ -43,7 +43,8 @@ public class InicioController {
 		return "indexIngreso";
 	}
 	
-	@GetMapping("/lista")
+	/*
+	@GetMapping("/Tipos")
 	public String listarTipoPersona(Model modelo) {
 		//lista tipo persona
 		List<TipoPersona> tp= tipoPersonaService.listarPer();
@@ -62,6 +63,6 @@ public class InicioController {
 		modelo.addAttribute("listaTipoProd",tProd);
 		return "ListarTipos";
 		
-	}
+	}*/
 
 }

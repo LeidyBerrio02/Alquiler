@@ -48,11 +48,11 @@ public class ProductoServiceImp  implements ProductoService{
 			productoBD.setIdtipoproducto(producto.getIdtipoproducto());
 			productoBD.setNombre(producto.getNombre());
 			productoBD.setPrecio(producto.getPrecio());
+			productoBD.setImagen(producto.getImagen());
 		}
 		
 		return productoRepository.save(productoBD);
 	}
 
-	
 	
 }

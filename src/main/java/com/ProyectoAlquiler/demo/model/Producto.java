@@ -40,6 +40,9 @@ public class Producto {
 	
 	@Column(name="precio")
 	private Double precio;
+	
+	@Column(name="imagen")
+	private String imagen;
 
 	public long getIdProducto() {
 		return idProducto;
@@ -95,6 +98,14 @@ public class Producto {
 
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 	
