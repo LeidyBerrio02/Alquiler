@@ -1,12 +1,15 @@
 package com.ProyectoAlquiler.demo.controller;
 
-import java.util.List;				
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -26,6 +29,8 @@ public class TipoPersonaController {
 	public String mostrar(Model modelo) {
 		List<TipoPersona> tp = tipoPersonaService.listarPer();
 		modelo.addAttribute("listaTipoPersona", tp);
+		TipoPersona tpersona =  new TipoPersona();
+		modelo.addAttribute("tpersona",tpersona);
 		return "ListarTipoPersona";
 	}
 	
@@ -35,8 +40,9 @@ public class TipoPersonaController {
 	}*/
 	
 	@PostMapping("crear")
-	public TipoPersona crear(@RequestBody TipoPersona tipoPersona) {
-		return tipoPersonaService.crear(tipoPersona);
+	public String crear(@ModelAttribute("tpersona") @Valid TipoPersona tipoPersona) {
+		tipoPersonaService.crear(tipoPersona);
+		return "redirect:/TipoPersona";
 	}
 	
 	@PutMapping("/actualizar/{idtipoPersona}")
@@ -48,7 +54,5 @@ public class TipoPersonaController {
 	public Boolean eliminar(@PathVariable Long idtipoPersona) {
 		return tipoPersonaService.eliminar(idtipoPersona);
 	}
-
-	
 
 }

@@ -1,12 +1,15 @@
 package com.ProyectoAlquiler.demo.controller;
 
-import java.util.List;	
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,12 +36,16 @@ public class TipoDocumentoController {
 		//lista tipo documento 
 	List<TipoDocumento> td =tipoDocumentoService.listarDoc();
 	modelo.addAttribute("listaTipoDoc",td);
+	//objeto para crear nuevo tipo documento
+	TipoDocumento tDoc = new TipoDocumento();
+	modelo.addAttribute("tDoc",tDoc);
 		return "ListarTipoDocumento";
 	}
 	
 	@PostMapping("/CrearTD")
-	public TipoDocumento crear(@RequestBody TipoDocumento tipoDocumento) {
-		return tipoDocumentoService.crear(tipoDocumento);
+	public String crear(@ModelAttribute("tDoc")@Valid TipoDocumento tipoDocumento) {
+		tipoDocumentoService.crear(tipoDocumento);
+		return "redirect:/TipoDocumento";
 	}
 	
 	@PutMapping("/actualizar/{idTipoDocumento}")

@@ -65,7 +65,20 @@
 				<td><a th:href="#" th:text="Eliminar" class="btn btn-danger"></a>-->
 			<tr>
 		</tbody>
-	</table></div>
+	</table>
+	
+	<div class="container">
+	<form class="form-control" th:action="@{/TipoDocumento/CrearTD}" th:object="${tDoc}" method="POST">
+	<input type="hidden" id="idtipodocumento" th="*{idtipodocumento}">
+	<label>Nuevo Tipo Documento</label>
+	<input type="text" name="TipoDocumento" th:field="*{TipoDocumento}">
+	<input type="submit" value="Registrar" class="btn btn-dark">
+	</form>
+	
+	</div>
+	
+	
+	</div>
 
 
 </body>

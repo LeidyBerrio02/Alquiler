@@ -64,7 +64,20 @@
 				<td><a th:href="#" th:text="Eliminar" class="btn btn-danger"></a>-->
 			<tr>
 		</tbody>
-	</table></div>
+	</table>
+	
+	<div class="container">
+	<form class="form-control" method="POST" th:action="@{/TipoNovedad/crear}" th:object="${tNovedad}" >
+	<input type="hidden" id="idtiponovedad" th:field="*{idtiponovedad}">
+	<label>Nuevo Tipo Novedad</label>
+	<input type="text" id="novedadN" th:field="*{novedadN}">
+	<input type="submit" value="Registrar" class="btn btn-dark">
+	</form>
+	
+	
+	</div>
+	
+	</div>
 	
 </body>
 </html>
