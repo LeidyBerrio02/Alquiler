@@ -1,12 +1,15 @@
 package com.ProyectoAlquiler.demo.controller;
 
-import java.util.List;		
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -50,9 +53,21 @@ public class PersonaController {
 		return personaService.listar();
 	}*/
 	
+	@GetMapping("/mostrarFormulario")
+	public String goPersona(Model modelo) {
+		Persona persona = new Persona();
+		modelo.addAttribute("persona", persona);
+		List<TipoDocumento> tipoDoc = tipoDocumentoService.listarDoc();
+		List<TipoPersona> tipoPer = tipoPersonaService.listarPer();
+		modelo.addAttribute("tipoDoc",tipoDoc);
+		modelo.addAttribute("tipoPer", tipoPer);
+		return "CrearPersona";
+	}
+	
 	@PostMapping("/crear")
-	public Persona crear(@RequestBody Persona persona) {
-		return personaService.crear(persona);
+	public String crear(@ModelAttribute("persona")@Valid Persona persona) {
+		 personaService.crear(persona);
+		 return "redirect:/Persona";
 	}
 	
 	@PutMapping("/actualizar/{idPersona}")

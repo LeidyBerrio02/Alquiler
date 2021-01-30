@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -28,6 +31,8 @@ public class Producto {
 	@JoinColumn(name="idtipoproducto")
 	private TipoProducto idtipoproducto;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso  = ISO.DATE)
 	@Column(name="fechaestreno")
 	private Date fechaEstreno;
 	

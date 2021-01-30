@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Registrar Persona</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
@@ -44,6 +44,39 @@
 	</div>
 </nav>
 <body>
+<div class="container">
+<h4>Nueva Persona</h4>
+<form class="form-control" th:object="${persona}" method="POST" th:action="@{/Persona/crear}">
+<label>Nombre</label>
+<input type="text" placeholder="Nombre" th:field="*{nombre}"> 
+<label>Apellido</label>
+<input type="text" placeholder="Apellido" th:field="*{apellido}"> 
+<label>Email</label>
+<input type="email" placeholder="Email" th:field="*{email}"> 
+<label>Direccion</label>
+<input type="text" placeholder="Direccion" th:field="*{direccion}"> 
+
+<label>Tipo Documento</label>
+<select th:field="${persona.idTipoDocumento}">
+<option th:each="var: ${tipoDoc}" th:value="${var.idtipodocumento}" th:text="${var.TipoDocumento}"></option>
+</select>
+
+<label>Documento</label>
+<input type="number" placeholder="N° Documento" th:field="*{numeroDocumento}"> 
+
+<label>Tipo Persona</label>
+<select th:field="${persona.tipopersona_idtipopersona}">
+<option th:each="varP: ${tipoPer}" th:value="${varP.idTipoPersona}" th:text="${varP.TipoPersona}"></option>
+</select>
+
+<input type="submit" value="Registrar" class="btn btn-dark">
+
+</form>
+
+
+</div>
+
+
 
 </body>
 </html>
