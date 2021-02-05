@@ -20,4 +20,9 @@ public class DetalleAlquilerServiceImp implements DetalleAlquilerService {
 		return detalleAlquilerRepository.findAll();
 	}
 
+	@Override
+	public DetalleAlquiler crear(DetalleAlquiler detalleAlquiler) {
+		return detalleAlquilerRepository.save(detalleAlquiler);
+	}
+
 }

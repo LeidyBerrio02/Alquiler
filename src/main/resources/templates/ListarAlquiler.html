@@ -89,12 +89,19 @@
 	</th:block>
 	</td>  
 	<td th:text="${var.total}">
-	
+	<!-- <td>
+	<th:block th:each="alquiler: ${var.alquiler}">
+	<label th:text="${alquiler.idnovedad.idtiponovedad.novedadN}"></label>
+	<label th:text="${alquiler.idnovedad.descripcion}"></label>
+	</th:block>
+	</td> -->
 	</tbody>
 	
 	</table>
 	
-	
+	<div class="container">
+	<a href="/Detalle/MostrarFormulario"><input value="Crear Nuevo Alquiler" class="btn btn-dark"></a>
+	</div>
 	
 	
 	</div>

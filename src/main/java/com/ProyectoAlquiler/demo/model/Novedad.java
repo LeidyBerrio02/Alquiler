@@ -12,6 +12,7 @@ public class Novedad {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idnovedad")
 	private Long idnovedad;
 	
 	@JsonIgnore
@@ -26,8 +27,6 @@ public class Novedad {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idnovedad")
 	private List<Alquiler> alquiler;
 
-	
-	
 	public Long getIdnovedad() {
 		return idnovedad;
 	}
@@ -59,7 +58,7 @@ public class Novedad {
 	public void setAlquiler(List<Alquiler> alquiler) {
 		this.alquiler = alquiler;
 	}
-	
 
+	
 	
 }

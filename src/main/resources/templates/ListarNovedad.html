@@ -11,6 +11,41 @@
 <link rel="stylesheet" type="text/css" href="static/css/style.css"
 	th:href="@{/css/style.css}">
 </head>
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/"> <img src="/img/home.png" alt=""
+			width="30" height="30" class="d-inline-block align-top">
+			Catalogo
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="/Detalle">Alquiler</a></li>
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="/Persona">Persona</a></li>
+					<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="/Novedad">Novedad</a></li>
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="/Producto">Producto</a></li>
+	<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle nav-link active" href="#"
+					id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+					aria-expanded="false"> Tipos </a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<li><a class="dropdown-item" href="/TipoDocumento">Tipo Documento</a></li>
+						<li><a class="dropdown-item" href="/TipoNovedad">Tipo Novedad</a></li>
+						<li><a class="dropdown-item" href="/TipoPersona">Tipo Persona</a></li>
+						<li><a class="dropdown-item" href="/TipoProducto">Tipo Producto</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</div>
+</nav>
 <body>
 	<div class="container">
 
@@ -28,39 +63,7 @@
 					<td th:text="${var.idnovedad}">
 					
 					<td> 
-		<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="/"> <img src="/img/home.png" alt=""
-			width="30" height="30" class="d-inline-block align-top">
-			Catalogo
-		</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-			data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="/Detalle">Alquiler</a></li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="/Persona">Persona</a></li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="/Producto">Producto</a></li>
-	<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#"
-					id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false"> Tipos </a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<li><a class="dropdown-item" href="c">Tipo Documento</a></li>
-						<li><a class="dropdown-item" href="c">Tipo Novedad</a></li>
-						<li><a class="dropdown-item" href="c">Tipo Persona</a></li>
-						<li><a class="dropdown-item" href="c">Tipo Producto</a></li>
-					</ul></li>
-			</ul>
-		</div>
-	</div>
-</nav>			<th:block th:each="tipoNov: ${var.idtiponovedad}">
+		<th:block th:each="tipoNov: ${var.idtiponovedad}">
 					<label th:text="${tipoNov.novedadN}"></label>
 					</th:block>
 					</td>
@@ -69,6 +72,23 @@
 			</tbody>
 
 		</table>
+		
+		
+		<div class="container">
+		<form th:action="@{/Novedad/crear}" th:object="${novedad}" class="form-control" method="POST">
+		<label>Tipo Novedad</label>
+		
+		<select th:field="*{idtiponovedad}">
+		<option th:each="var : ${listaTN}" th:value="${var.idtiponovedad}" th:text="${var.novedadN}"></option>
+		</select>
+		
+		<label>Descripción</label>
+		<textarea rows="4" cols="40" th:field="*{descripcion}"></textarea>
+		<input type="submit" value="Registrar" class="btn btn-dark">		
+		</form>
+		
+		</div>
+		
 	</div>
 
 </body>

@@ -7,4 +7,5 @@ import com.ProyectoAlquiler.demo.model.DetalleAlquiler;
 public interface DetalleAlquilerService {
 
 	List<DetalleAlquiler> listar();
+	DetalleAlquiler crear(DetalleAlquiler detalleAlquiler);
 }

@@ -16,7 +16,7 @@ public class Alquiler {
 	private Long idalquiler;
 	
 	@Column(name="fechaalquiler")
-	private Date fechaAlquiler;
+	private Date fechaAlquiler = new Date();
 	
 	@Column(name="fechaentrega")
 	private Date fechaEntrega;
