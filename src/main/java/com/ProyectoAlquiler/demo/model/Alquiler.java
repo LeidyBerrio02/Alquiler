@@ -26,7 +26,7 @@ public class Alquiler {
 	@JoinColumn(name="persona_idpersona")
 	private Persona idPersona;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idnovedad")
 	private Novedad idnovedad;

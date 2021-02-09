@@ -58,6 +58,8 @@
 	<th scope="col">Tipo Documento</th>
 	<th scope="col">Documento</th>
 	<th scope="col">Tipo Persona</th>
+	<th scope="col">Editar</th>
+	<th scope="col">Eliminar</th>
 	</thead>
 	
 	<tbody>
@@ -82,11 +84,25 @@
 	 </th:block>
 	</td>
 	
+	<!-- <td><a
+					th:href="@{actualizar/{idProyecto}(idProyecto=${proyecto.idProyecto})}"
+					class="btn btn-primary" th:text="Editar"></a></td>
+				<td><a
+					th:href="@{eliminar/{idProyecto}(idProyecto=${proyecto.idProyecto})}"
+					class="btn btn-danger" th:text="Eliminar"></a></td>-->
+			
+			
+	<td><a th:href="@{/Persona/actualizar/{idPersona}(idPersona=${var.idPersona})}" class="btn btn-primary" th:text="Editar"></a>
+	<td><a th:href="@{/Persona/eliminar/{idPersona}(idPersona=${var.idPersona})}" class="btn btn-dark" th:text="Eliminar"></a>
+	
+	</td>
+	
+	</tr>
 	</tbody>
 	
 	</table>
 	
-	<a href="/Persona/mostrarFormulario"><input type="submit" class="btn btn-dark" value="Crear Nueva Persona"></a>
+	<a href="/Persona/mostrarFormulario" ><input type="submit" class="btn btn-dark" value="Crear Nueva Persona"></a>
 	
 	
 	</div>

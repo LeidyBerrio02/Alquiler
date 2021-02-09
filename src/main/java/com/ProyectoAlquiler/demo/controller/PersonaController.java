@@ -62,7 +62,7 @@ public class PersonaController {
 		modelo.addAttribute("tipoDoc",tipoDoc);
 		modelo.addAttribute("tipoPer", tipoPer);
 		return "CrearPersona";
-	}
+	}  
 	
 	@PostMapping("/crear")
 	public String crear(@ModelAttribute("persona")@Valid Persona persona) {
@@ -70,13 +70,22 @@ public class PersonaController {
 		 return "redirect:/Persona";
 	}
 	
-	@PutMapping("/actualizar/{idPersona}")
-	public Persona actualizar(@PathVariable Long idPersona,@RequestBody Persona persona) {
-		return personaService.actualizar(persona,idPersona);
+	@GetMapping("/actualizar/{idPersona}")
+	public String actualizar(Model modelo, Persona persona) {
+		 persona = personaService.buscar(persona);
+		 modelo.addAttribute("persona", persona);
+		 List<TipoDocumento> tipoDoc = tipoDocumentoService.listarDoc();
+			List<TipoPersona> tipoPer = tipoPersonaService.listarPer();
+			modelo.addAttribute("tipoDoc",tipoDoc);
+			modelo.addAttribute("tipoPer", tipoPer);
+				return "CrearPersona";
+		
 	}
 	
-	@DeleteMapping("/eliminar/{idPersona}")
-	public Boolean eliminar(@PathVariable Long idPersona) {
-		return personaService.eliminar(idPersona);
+	@GetMapping("/eliminar/{idPersona}")
+	public String eliminar(@PathVariable Long idPersona) {
+		 
+				personaService.eliminar(idPersona);
+				return "redirect:/Persona";
 	}
 }

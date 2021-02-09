@@ -55,11 +55,11 @@ public class PersonaServiceImp implements PersonaService {
 	}
 
 	@Override
-	public Persona actualizar(Persona persona, Long idPersona) {
+	public Persona buscar(Persona persona) {
 		
-		Persona personaBD = personaRepository.findById(idPersona).orElse(null);
+		//Persona personaBD = personaRepository.findById(idPersona).orElse(null);
 		
-		if(persona != null) {
+		/*if(persona != null) {
 			personaBD.setApellido(persona.getApellido());
 			personaBD.setDireccion(persona.getDireccion());
 			personaBD.setEmail(persona.getEmail());
@@ -70,6 +70,9 @@ public class PersonaServiceImp implements PersonaService {
 		}
 		
 		return personaRepository.save(personaBD);
+		*/
+		return personaRepository.findById(persona.getIdPersona()).orElse(null);
+		
 	}
 
 }

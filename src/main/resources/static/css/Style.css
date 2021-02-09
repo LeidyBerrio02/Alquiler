@@ -16,11 +16,11 @@ form{
 form input {
   font: inherit;
   position: relative;
-    border-color: transparent;
+    border-color: black;
   }
   
   form input:hover{
-  border-color: black;
+  border-color: transparent;
   }
   
   form select{

@@ -9,7 +9,7 @@ public interface PersonaService {
 	List<Persona> listar();
 	List<Persona> listaCompleta();
 	Persona crear(Persona persona);
-	Persona actualizar(Persona persona , Long idPersona);
+	Persona buscar(Persona persona);
 	Boolean eliminar(Long idPersona);
 	
 }

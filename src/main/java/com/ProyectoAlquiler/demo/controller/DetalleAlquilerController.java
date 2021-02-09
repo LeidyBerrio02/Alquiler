@@ -58,8 +58,8 @@ public class DetalleAlquilerController {
 		modelo.addAttribute("listaA", listaA);
 		List<Novedad> nov = novedadService.listar();
 		modelo.addAttribute("listaNov", nov);
-		/*List<TipoNovedad> tNov = tipoNovedadService.listar();
-		modelo.addAttribute("listaTipoNov", tNov);*/
+		List<TipoNovedad> tNov = tipoNovedadService.listar();
+		modelo.addAttribute("listaTipoNov", tNov);
 		List<Producto> prod = productoService.listarProd();
 		modelo.addAttribute("listaProd", prod);
 		return "CrearAlquiler";

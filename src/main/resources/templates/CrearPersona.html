@@ -47,14 +47,15 @@
 <div class="container">
 <h4>Nueva Persona</h4>
 <form class="form-control" th:object="${persona}" method="POST" th:action="@{/Persona/crear}">
+<input type="hidden"th:field="*{idPersona}" name="idPersona">
 <label>Nombre</label>
-<input type="text" placeholder="Nombre" th:field="*{nombre}"> 
+<input type="text" placeholder="Nombre" th:field="*{nombre}" name="nombre"> 
 <label>Apellido</label>
-<input type="text" placeholder="Apellido" th:field="*{apellido}"> 
+<input type="text" placeholder="Apellido" th:field="*{apellido}" name="apellido"> 
 <label>Email</label>
 <input type="email" placeholder="Email" th:field="*{email}"> 
 <label>Direccion</label>
-<input type="text" placeholder="Direccion" th:field="*{direccion}"> 
+<input type="text" placeholder="Direccion" th:field="*{direccion}"  name="direccion"> 
 
 <label>Tipo Documento</label>
 <select th:field="${persona.idTipoDocumento}">
@@ -62,10 +63,10 @@
 </select>
 
 <label>Documento</label>
-<input type="number" placeholder="N° Documento" th:field="*{numeroDocumento}"> 
+<input type="number" placeholder="N° Documento" th:field="*{numeroDocumento}" name="documento"> 
 
 <label>Tipo Persona</label>
-<select th:field="${persona.tipopersona_idtipopersona}">
+<select th:field="${persona.tipopersona_idtipopersona}" name="tipopersona_idtipopersona">
 <option th:each="varP: ${tipoPer}" th:value="${varP.idTipoPersona}" th:text="${varP.TipoPersona}"></option>
 </select>
 

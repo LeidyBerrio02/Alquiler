@@ -45,9 +45,19 @@
 
 <body>
 <div class="container">
+<h4>Alquiler</h4>
 <form th:action="@{/Detalle/crear}" th:object="${detalle}" method="POST" class="form-control">
-<label>Fecha Entraga</label>
+<!-- 
+<label>id Alquiler</label>
+<input type="text" th:field="*{alquiler}" >
+
+<label>Producto</label>
+<input type="text" th:field="*{Producto}" >
+
+ 
+<label>Fecha Entrega</label>
 <input type="date" th:field="*{alquiler.fechaEntrega}">
+-->
 
 <label>Persona</label>
 <select th:field="*{alquiler.idPersona.idPersona}">
@@ -63,9 +73,9 @@
 <select th:field="*{producto.idProducto}" multiple>
 <option th:each="var : ${listaProd}" th:value="${var.idProducto}" th:text="${var.nombre}"></option>
 </select>
-
+-->
 <label>Total</label>
-<input type="number">
+<input type="number" th:field="*{total}">
 <input type="submit" value="Registrar" class="btn btn-dark">
 
 </form>
