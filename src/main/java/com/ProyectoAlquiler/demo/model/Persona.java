@@ -1,7 +1,7 @@
 package com.ProyectoAlquiler.demo.model;
 
 import java.util.List;
-
+import javax.validation.constraints.NotEmpty;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,26 +15,33 @@ public class Persona {
 	@Column(name="idpersona")
 	private Long idPersona;
 	
+	@NotEmpty 
 	@Column(name="nombre")
 	private String nombre;
 	
+	@NotEmpty
 	@Column(name="apellido")
 	private String apellido;
 	
+	@NotEmpty
 	@Column(name="email")
 	private String email;
 	
+	@NotEmpty
 	@Column(name="direccion")
 	private String direccion;
 	
+	//@NotEmpty
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="tipodocumento_idtipodocumento")
 	private TipoDocumento idTipoDocumento;
 	
+	@NotEmpty
 	@Column(name="numerodocumento")
 	private String numeroDocumento;
 	
+	//@NotEmpty
 	@JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="tipopersona_idtipopersona")

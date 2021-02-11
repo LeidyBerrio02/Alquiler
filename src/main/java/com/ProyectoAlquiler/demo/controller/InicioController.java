@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ProyectoAlquiler.demo.model.Producto;
 import com.ProyectoAlquiler.demo.model.TipoDocumento;
 import com.ProyectoAlquiler.demo.model.TipoNovedad;
 import com.ProyectoAlquiler.demo.model.TipoPersona;
 import com.ProyectoAlquiler.demo.model.TipoProducto;
+import com.ProyectoAlquiler.demo.service.ProductoService;
 import com.ProyectoAlquiler.demo.service.TipoDocumentoService;
 import com.ProyectoAlquiler.demo.service.TipoNovedadService;
 import com.ProyectoAlquiler.demo.service.TipoPersonaService;
@@ -32,9 +34,14 @@ public class InicioController {
 	@Autowired
 	public TipoProductoService tipoProductoService;
 	
+	@Autowired
+	public ProductoService productoService;
+	
 	
 	@GetMapping()
-	public String goHome() {
+	public String goHome(Model modelo) {
+		List<Producto> listaProducto = productoService.listarProd();
+		modelo.addAttribute("listaP", listaProducto);
 		return "index";
 	}
 	

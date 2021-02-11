@@ -49,26 +49,36 @@
 <form class="form-control" th:object="${persona}" method="POST" th:action="@{/Persona/crear}">
 <input type="hidden"th:field="*{idPersona}" name="idPersona">
 <label>Nombre</label>
-<input type="text" placeholder="Nombre" th:field="*{nombre}" name="nombre"> 
+<input type="text" placeholder="Nombre" th:field="*{nombre}" name="nombre" required> 
+<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Ingrese nombre</span>
+
 <label>Apellido</label>
-<input type="text" placeholder="Apellido" th:field="*{apellido}" name="apellido"> 
+<input type="text" placeholder="Apellido" th:field="*{apellido}" name="apellido" required="required">
+<span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Ingrese apellido</span>
+ 
 <label>Email</label>
-<input type="email" placeholder="Email" th:field="*{email}"> 
+<input type="email" placeholder="Email" th:field="*{email}" required="required">
+<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Ingrese email</span>
+ 
 <label>Direccion</label>
-<input type="text" placeholder="Direccion" th:field="*{direccion}"  name="direccion"> 
+<input type="text" placeholder="Direccion" th:field="*{direccion}"  name="direccion" required="required">  
+<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Ingrese direccion</span>
 
 <label>Tipo Documento</label>
-<select th:field="${persona.idTipoDocumento}">
+<select th:field="${persona.idTipoDocumento}" required="required">
 <option th:each="var: ${tipoDoc}" th:value="${var.idtipodocumento}" th:text="${var.TipoDocumento}"></option>
 </select>
+<span th:if="${#fields.hasErrors('idTipoDocumento')}" th:errors="*{idTipoDocumento}">Seleccione documento</span>
 
 <label>Documento</label>
-<input type="number" placeholder="N° Documento" th:field="*{numeroDocumento}" name="documento"> 
+<input type="number" placeholder="N° Documento" th:field="*{numeroDocumento}" name="documento" required="required"> 
+<span th:if="${#fields.hasErrors('numeroDocumento')}" th:errors="*{numeroDocumento}">Ingrese numero documento</span>
 
 <label>Tipo Persona</label>
-<select th:field="${persona.tipopersona_idtipopersona}" name="tipopersona_idtipopersona">
+<select th:field="${persona.tipopersona_idtipopersona}" name="tipopersona_idtipopersona" required="required">
 <option th:each="varP: ${tipoPer}" th:value="${varP.idTipoPersona}" th:text="${varP.TipoPersona}"></option>
 </select>
+<span th:if="${#fields.hasErrors('tipopersona_idtipopersona')}" th:errors="*{tipopersona_idtipopersona}">Ingrese nombre</span>
 
 <input type="submit" value="Registrar" class="btn btn-dark">
 

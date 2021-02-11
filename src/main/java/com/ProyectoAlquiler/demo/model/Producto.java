@@ -47,7 +47,7 @@ public class Producto {
 	private Double precio;
 	
 	@Column(name="imagen")
-	private String imagen;
+	private String imagen="default.png";
 
 	public long getIdProducto() {
 		return idProducto;
@@ -113,8 +113,7 @@ public class Producto {
 		this.imagen = imagen;
 	}
 	
-	
-	
+
 	/**@ManyToOne(fetch = FetchType.LAZY)
 	private DetalleAlquiler detalleAlquiler;*/
 

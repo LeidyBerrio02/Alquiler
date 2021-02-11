@@ -73,7 +73,22 @@
 	<td th:text="${var.fechaEstreno}">
 	<td th:text="${var.compositor}">
 	<td th:text="${var.precio}">
-	<td th:text="${var.imagen}">
+	
+	<!-- <td> 
+	<!-- la variable temporal se reemplaza por el valor que tiene el atributo imagen de la clase producto 
+	<img alt="default" th:src="@{/img/{variabletemporal} ( variabletemporal=${var.imagen} ) }" th:if="${var.imagen!=null}" width="100" height="100">
+    </td>-->
+    
+    <td>
+	<div th:if="${var.imagen}">
+	<img alt="default" th:src="@{/img/{variabletemporal} ( variabletemporal=${var.imagen} ) }" width="100" height="100">
+	</div>
+	
+	<div th:unless="${var.imagen}">
+	<img alt="default" th:src="@{/img/default.png}" width="100" height="100">
+	</div>
+	</td>
+
 	</tbody>
 	
 	</table>
