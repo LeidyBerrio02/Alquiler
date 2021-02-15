@@ -10,5 +10,6 @@ public interface TipoPersonaService {
 	TipoPersona crear(TipoPersona tipoPersona);
 	TipoPersona actualizar(TipoPersona tipoPersona, Long idTipoPersona);
 	Boolean eliminar(Long idTipoPersona);
+	String cantidad();
 	
 }

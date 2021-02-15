@@ -54,5 +54,10 @@ public class ProductoServiceImp  implements ProductoService{
 		return productoRepository.save(productoBD);
 	}
 
+	@Override
+	public String cantidad() {
+		return productoRepository.cantidad();
+	}
+
 	
 }

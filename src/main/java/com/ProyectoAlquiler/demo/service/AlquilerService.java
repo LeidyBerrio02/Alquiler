@@ -10,5 +10,5 @@ public interface AlquilerService {
 	Alquiler crear(Alquiler alquiler);
 	Alquiler actualizar(Alquiler alquiler,Long idAlquiler);
 	Boolean eliminar(Long idAlquiler);
-	
+	String cantidad();
 }

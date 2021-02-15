@@ -75,4 +75,9 @@ public class PersonaServiceImp implements PersonaService {
 		
 	}
 
+	@Override
+	public String cantidad() {
+		return personaRepository.cantidad();
+	}
+
 }

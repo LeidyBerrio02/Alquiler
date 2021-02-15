@@ -10,5 +10,6 @@ public interface ProductoService {
 	Producto crear(Producto producto);
 	Producto actualizar(Producto producto , Long idProducto);
 	Boolean eliminar(Long idProducto);
+	String cantidad();
 	
 }

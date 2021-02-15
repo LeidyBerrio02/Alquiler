@@ -44,4 +44,10 @@ public class TipoNovedadServiceImp implements TipoNovedadService {
 		return false;
 	}
 
+	@Override
+	public String cantidad() {
+		// TODO Auto-generated method stub
+		return tipoNovedadRepository.cantidad();
+	}
+
 }

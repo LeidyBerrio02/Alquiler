@@ -10,5 +10,5 @@ public interface TipoProductoService {
 	TipoProducto crear(TipoProducto tipoProducto);
 	TipoProducto actualizar(TipoProducto tipoProducto, Long idTipoProducto);
 	Boolean eliminar(Long idTipoProducto);
-	
+	String cantidad();
 }

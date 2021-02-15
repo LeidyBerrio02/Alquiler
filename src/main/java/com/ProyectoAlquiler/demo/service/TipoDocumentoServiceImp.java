@@ -46,4 +46,9 @@ public class TipoDocumentoServiceImp implements TipoDocumentoService {
 		return false;
 	}
 
+	@Override
+	public String cantidad() {
+		return tipoDocumentoRepository.cantidad();
+	}
+
 }

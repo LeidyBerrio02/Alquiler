@@ -10,5 +10,5 @@ public interface TipoDocumentoService {
 	TipoDocumento crear(TipoDocumento tipoDocumento);
 	TipoDocumento actualizar(TipoDocumento tipoDocumento, Long idTipoDocumento);
 	Boolean eliminar(Long idTipoDocumento);
-	
+	String cantidad();
 }

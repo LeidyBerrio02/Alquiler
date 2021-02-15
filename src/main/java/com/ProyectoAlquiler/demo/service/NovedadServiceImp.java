@@ -44,4 +44,9 @@ public class NovedadServiceImp implements NovedadService{
 		return false;
 	}
 
+	@Override
+	public String cantidad() {
+		return novedadRespository.cantidad();
+	}
+
 }

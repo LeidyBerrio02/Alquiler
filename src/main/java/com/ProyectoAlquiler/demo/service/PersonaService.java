@@ -11,5 +11,6 @@ public interface PersonaService {
 	Persona crear(Persona persona);
 	Persona buscar(Persona persona);
 	Boolean eliminar(Long idPersona);
+	String cantidad();
 	
 }

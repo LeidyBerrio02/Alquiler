@@ -13,6 +13,9 @@ import com.ProyectoAlquiler.demo.model.TipoDocumento;
 import com.ProyectoAlquiler.demo.model.TipoNovedad;
 import com.ProyectoAlquiler.demo.model.TipoPersona;
 import com.ProyectoAlquiler.demo.model.TipoProducto;
+import com.ProyectoAlquiler.demo.service.AlquilerService;
+import com.ProyectoAlquiler.demo.service.NovedadService;
+import com.ProyectoAlquiler.demo.service.PersonaService;
 import com.ProyectoAlquiler.demo.service.ProductoService;
 import com.ProyectoAlquiler.demo.service.TipoDocumentoService;
 import com.ProyectoAlquiler.demo.service.TipoNovedadService;
@@ -37,6 +40,14 @@ public class InicioController {
 	@Autowired
 	public ProductoService productoService;
 	
+	@Autowired
+	public PersonaService personaService;
+	
+	@Autowired
+	public NovedadService novedadService;
+	
+	@Autowired
+	public AlquilerService alquilerService;
 	
 	@GetMapping()
 	public String goHome(Model modelo) {
@@ -46,8 +57,29 @@ public class InicioController {
 	}
 	
 	@GetMapping("/Inicio")
-	public String goHomeI() {
+	public String goHomeI(Model modelo) {
+		String per = personaService.cantidad();
+		modelo.addAttribute("cantPersona",per);
+		String prod = productoService.cantidad();
+		modelo.addAttribute("cantidadProd",prod);
+		String nov = novedadService.cantidad();
+		modelo.addAttribute("cantNovedad",nov);
+		String alq = alquilerService.cantidad();
+		modelo.addAttribute("cantAlquiler", alq);
+		String tDoc = tipoDocumentoService.cantidad();
+		modelo.addAttribute("cantTDoc",tDoc);
+		String tNov = tipoNovedadService.cantidad();
+		modelo.addAttribute("cantTNov", tNov);
+		String tPer = tipoPersonaService.cantidad();
+		modelo.addAttribute("cantTPer", tPer);
+		String tProd = tipoProductoService.cantidad();
+		modelo.addAttribute("cantTProd", tProd);
 		return "indexIngreso";
+	}
+	
+	@GetMapping("/Login")
+	public String goLogin() {
+		return "login";
 	}
 	
 	/*

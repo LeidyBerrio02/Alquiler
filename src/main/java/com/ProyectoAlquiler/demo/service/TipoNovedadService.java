@@ -9,5 +9,5 @@ public interface TipoNovedadService {
 	TipoNovedad crear(TipoNovedad novedad);
 	TipoNovedad actualizar(TipoNovedad novedad, Long idtiponovedad);
 	Boolean eliminar(Long idtiponovedad);
-	
+	String cantidad();
 }

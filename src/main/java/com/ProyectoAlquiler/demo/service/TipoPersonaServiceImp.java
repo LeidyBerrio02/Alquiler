@@ -44,4 +44,10 @@ public class TipoPersonaServiceImp implements TipoPersonaService {
 		return tipoPersonaRepository.save(tipoPersonaEnBD);
 	}
 
+	@Override
+	public String cantidad() {
+		// TODO Auto-generated method stub
+		return tipoPersonaRepository.cantidad();
+	}
+
 }

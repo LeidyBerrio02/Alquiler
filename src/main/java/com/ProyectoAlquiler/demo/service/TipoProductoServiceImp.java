@@ -50,4 +50,10 @@ public class TipoProductoServiceImp implements TipoProductoService{
 		return false;
 	}
 
+	@Override
+	public String cantidad() {
+		// TODO Auto-generated method stub
+		return tipoProductoRepository.cantidad();
+	}
+
 }

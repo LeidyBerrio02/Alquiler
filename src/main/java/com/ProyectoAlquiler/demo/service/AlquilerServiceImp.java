@@ -50,4 +50,9 @@ public class AlquilerServiceImp implements AlquilerService {
 		return alquilerRepository.save(alquilerBD);
 	}
 
+	@Override
+	public String cantidad() {
+		return alquilerRepository.cantidad();
+	}
+
 }

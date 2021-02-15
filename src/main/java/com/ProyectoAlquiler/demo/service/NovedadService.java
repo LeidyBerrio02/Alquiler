@@ -13,5 +13,5 @@ public interface NovedadService {
 	Novedad crear(Novedad novedad);
 	Novedad actualizar(Novedad novedad, Long idNovedad);
 	Boolean eliminar(Long idNovedad);
-	
+	String cantidad();
 }
