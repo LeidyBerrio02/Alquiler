@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Login</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
@@ -13,7 +13,7 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/Inicio"> <img src="/img/home.png" alt=""
+		<a class="navbar-brand" href="/index"> <img src="/img/home.png" alt=""
 			width="30" height="30" class="d-inline-block align-top">
 			Inicio
 		</a>
@@ -23,13 +23,23 @@
 </head>
 <body>
 <div class="container">
-<form action="">
-<label>Usuario</label>
-<input type="text" name="user">
-<label>Password</label>
-<input type="password" name="password">
-<input type="submit" value="Iniciar Sesion" class="btn btn-dark"> 
+<form th:action="@{/login}" id="form" class="form-control" method="POST">
+<img src="static/img/user.png" th:src="@{/img/user.png}" id="img1" alt="User">
+<h3>Login</h3>
+<label>Username</label><br>
+<input type="text" name="username"><br>
+<label>Password</label><br>
+<input type="password" name="password"><br>
+<input type="submit" value="Login" class="btn btn-dark"> 
+<a href="/"><img id="img2" src="static/img/x.png" th:src="@{/img/x.png}"></a>
 </form>
+
+<div th:if="${param.error}" class="alert alert-danger" role="alert">
+		            Usuario o Contraseña Incorrecta.
+		        </div>
+		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
+		            Has Cerrado Sesion.
+		        </div>
 </div>
 
 	<script

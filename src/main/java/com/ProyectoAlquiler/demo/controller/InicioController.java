@@ -49,12 +49,12 @@ public class InicioController {
 	@Autowired
 	public AlquilerService alquilerService;
 	
-	@GetMapping()
+	@GetMapping("/index")
 	public String goHome(Model modelo) {
 		List<Producto> listaProducto = productoService.listarProd();
 		modelo.addAttribute("listaP", listaProducto);
 		return "index";
-	}
+	} 
 	
 	@GetMapping("/Inicio")
 	public String goHomeI(Model modelo) {
@@ -77,7 +77,7 @@ public class InicioController {
 		return "indexIngreso";
 	}
 	
-	@GetMapping("/Login")
+	@GetMapping("/login")
 	public String goLogin() {
 		return "login";
 	}
