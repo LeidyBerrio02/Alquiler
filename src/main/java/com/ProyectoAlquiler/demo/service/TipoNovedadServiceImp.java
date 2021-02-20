@@ -25,13 +25,14 @@ public class TipoNovedadServiceImp implements TipoNovedadService {
 	}
 
 	@Override
-	public TipoNovedad actualizar(TipoNovedad tNovedad, Long idtiponovedad) {
-		TipoNovedad tNovedadEnBD = tipoNovedadRepository.findById(idtiponovedad).orElse(null);
+	public TipoNovedad buscar(TipoNovedad tipoNovedad) {
+		/*TipoNovedad tNovedadEnBD = tipoNovedadRepository.findById(idtiponovedad).orElse(null);
 		if(tNovedad != null) {
 			tNovedadEnBD.setNovedad(tNovedad.getNovedad());
 		}
 		
-		return tipoNovedadRepository.save(tNovedadEnBD);
+		return tipoNovedadRepository.save(tNovedadEnBD);*/
+		return tipoNovedadRepository.findById(tipoNovedad.getIdtiponovedad()).orElseGet(null);
 	}
 	
 	@Override

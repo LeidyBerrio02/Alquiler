@@ -33,7 +33,7 @@ public class TipoPersonaServiceImp implements TipoPersonaService {
 	public TipoPersona crear(TipoPersona tipoPersona) {
 		return tipoPersonaRepository.save(tipoPersona);
 	}
-
+/*
 	@Override
 	public TipoPersona actualizar(TipoPersona tipoPersona, Long idTipoPersona) {
 
@@ -43,11 +43,19 @@ public class TipoPersonaServiceImp implements TipoPersonaService {
 		}
 		return tipoPersonaRepository.save(tipoPersonaEnBD);
 	}
-
+*/
+	
+	
 	@Override
 	public String cantidad() {
 		// TODO Auto-generated method stub
 		return tipoPersonaRepository.cantidad();
 	}
+
+@Override
+public TipoPersona buscar(TipoPersona tipoPersona) {
+	
+	return tipoPersonaRepository.findById(tipoPersona.getIdTipoPersona()).orElse(null);
+}
 
 }

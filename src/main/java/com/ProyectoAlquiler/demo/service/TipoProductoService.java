@@ -8,7 +8,8 @@ public interface TipoProductoService {
 
 	List<TipoProducto> listar();
 	TipoProducto crear(TipoProducto tipoProducto);
-	TipoProducto actualizar(TipoProducto tipoProducto, Long idTipoProducto);
+	/*TipoProducto actualizar(TipoProducto tipoProducto, Long idTipoProducto);*/
+	TipoProducto buscar(TipoProducto tipoProducto);
 	Boolean eliminar(Long idTipoProducto);
 	String cantidad();
 }

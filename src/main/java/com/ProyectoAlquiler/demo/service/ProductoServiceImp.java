@@ -39,9 +39,9 @@ public class ProductoServiceImp  implements ProductoService{
 	}
 
 	@Override
-	public Producto actualizar(Producto producto, Long idProducto) {
+	public Producto buscar(Producto producto) {
 	
-		Producto productoBD = productoRepository.findById(idProducto).orElse(null);
+		/*Producto productoBD = productoRepository.findById(idProducto).orElse(null);
 		if(producto != null) {
 			productoBD.setCompositor(producto.getCompositor());
 			productoBD.setFechaEstreno(producto.getFechaEstreno());
@@ -50,8 +50,8 @@ public class ProductoServiceImp  implements ProductoService{
 			productoBD.setPrecio(producto.getPrecio());
 			productoBD.setImagen(producto.getImagen());
 		}
-		
-		return productoRepository.save(productoBD);
+		*/
+		return productoRepository.findById(producto.getIdProducto()).orElse(null);
 	}
 
 	@Override

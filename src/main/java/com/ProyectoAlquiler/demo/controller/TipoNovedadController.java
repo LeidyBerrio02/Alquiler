@@ -1,4 +1,4 @@
-package com.ProyectoAlquiler.demo.controller;
+	package com.ProyectoAlquiler.demo.controller;
 
 import java.util.List;
 
@@ -47,14 +47,20 @@ public class TipoNovedadController {
 				
 	}
 	
-	@PutMapping("/actualizar/{idTipoNovedad}")
-	public TipoNovedad actualizar(@PathVariable Long idtipoNovedad, @RequestBody TipoNovedad tipoNovedad) {
-		return tipoNovedadService.actualizar(tipoNovedad, idtipoNovedad);
+	@GetMapping("/actualizar/{idtiponovedad}")
+	public String actualizar(Model modelo, TipoNovedad tipoNovedad) {
+		 tipoNovedad = tipoNovedadService.buscar(tipoNovedad);
+		 modelo.addAttribute("tNovedad",tipoNovedad);
+		 //poder mostrar lista
+		 List<TipoNovedad> tN = tipoNovedadService.listar();
+			modelo.addAttribute("listaTipoNovedad",tN);
+		 return "ListarTipoNovedad";
 	}
 	
-	@DeleteMapping("/eliminar/{idTipoNovedad}")
-	public Boolean eliminar(@PathVariable Long idtiponovedad) {
-		return tipoNovedadService.eliminar(idtiponovedad);
+	@GetMapping("/eliminar/{idtiponovedad}")
+	public String eliminar(@PathVariable Long idtiponovedad) {
+		 tipoNovedadService.eliminar(idtiponovedad);
+		 return "redirect:/TipoNovedad";
 	}
 
 }

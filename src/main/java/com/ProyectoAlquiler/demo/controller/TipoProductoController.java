@@ -52,14 +52,21 @@ public class TipoProductoController {
 		return "redirect:/TipoProducto";
 	}
 	
-	@PutMapping("/actualizar/{idTipoProducto}")
-	public TipoProducto actualizar(@PathVariable Long idTipoProducto,@RequestBody TipoProducto tipoProducto) {
-		return tipoProductoService.actualizar(tipoProducto, idTipoProducto);
+	@GetMapping("/actualizar/{idTipoProducto}")
+	//El objeto debe llamarse igual dado que es el mismo que se va a actualizar
+	public String actualizar(Model modelo, TipoProducto tipoP) {
+		tipoP = tipoProductoService.buscar(tipoP);
+		modelo.addAttribute("tipoP",tipoP);
+		//para poder mostrar la lista
+		List<TipoProducto> tP = tipoProductoService.listar();
+		modelo.addAttribute("listaTipoProd", tP);
+		 return "ListarTipoProducto";
 	}	
 	
-	@DeleteMapping("/eliminar/{idTipoProducto}")
-	public Boolean eliminar(Long idTipoProducto) {
-		return tipoProductoService.eliminar(idTipoProducto);
+	@GetMapping("/eliminar/{idTipoProducto}")
+	public String eliminar(@PathVariable Long idTipoProducto) {
+		 tipoProductoService.eliminar(idTipoProducto);
+		 return "redirect:/TipoProducto";
 	}
 	
 }

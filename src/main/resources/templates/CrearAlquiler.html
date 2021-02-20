@@ -44,7 +44,10 @@
 					</ul></li>			
 			</ul>
 		</div>
-			<a href="/"><img src="static/img/icono.png" th:src="@{/img/icono.png}"></a>
+			<form method="POST" th:action="@{/logout}">
+					<a href="#" onclick="this.parentNode.submit();">
+					<img style=" width: 20px; height: auto;" src="static/img/icono.png" th:src="@{/img/icono.png}"></a>
+			</form>
 	</div>
 
 </nav>

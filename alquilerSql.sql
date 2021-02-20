@@ -3,13 +3,22 @@ use alquiler;
 select * from alquiler;
 select * from detallealquiler;
 select * from novedad;
-select * from persona;
+select * from persona;	
 select * from producto;                                     
 select * from tipodocumento;
 select * from tiponovedad;
 select * from tipopersona;
 select * from tipoproducto;
 
+select count(idAlquiler) from alquiler;
+select count(iddetallealquiler) from detallealquiler;
+select count(idNovedad) from novedad;
+select count(idpersona) from persona;
+select count(idproducto) from producto;
+select count(idtipodocumento) from tipodocumento;
+select count(idtiponovedad) from tiponovedad;
+select count(idtipopersona) from tipopersona;
+select count(idtipoproducto) from tipoproducto;
 
 insert into tipoPersona (tipopersona) values ("Cliente normal");
 insert into tipoPersona (tipopersona) values ("Cliente exclusivo");
@@ -35,10 +44,13 @@ select idPersona, nombre,apellido,doc.TipoDocumento, numeroDocumento,Tipopersona
 from persona p , tipodocumento doc, tipopersona tp
 where p.TipoDocumento_idTipoDocumento = doc.idTipoDocumento and p.TipoPersona_idTipoPersona = tp.idTipoPersona;
 
-select idPersona, p.nombre,apellido, tipodocumento.TipoDocumento, p.numeroDocumento,p.TipoPersona_idTipoPersona, tipopersona.TipoPersona
+select * from persona;
+select * from tipodocumento;
+
+select p.idPersona, p.nombre, p.apellido, p.email, p.direccion, tipodocumento.TipoDocumento, p.numeroDocumento, tipopersona.TipoPersona
 from persona p 
 inner join tipopersona on p.TipoPersona_idTipoPersona = tipopersona.idTipoPersona
-inner join tipodocumento on p.TipoDocumento_idTipoDocumento = tipodocumento.idTipoDocumento;
+inner join tipodocumento on p.idtipodocumento = tipodocumento.idTipoDocumento;
 
 select * from canciones;
 alter table canciones add column compositor varchar(45);
@@ -56,7 +68,7 @@ alter table alquiler rename column fechaAlchiler to fechaAlquiler;
 insert into alquiler (fechaAlquiler, fechaEntrega, Persona_idPersona) values  ('2020-11-02','2020-12-02',2);
 insert into alquiler (fechaAlquiler, fechaEntrega, Persona_idPersona) values  ('2020-11-02','2020-12-02',1);
 insert into alquiler (fechaAlquiler, fechaEntrega, Persona_idPersona) values  ('2020-11-02','2020-12-02',3);
-insert into alquiler (fechaAlquiler, fechaEntrega, Persona_idPersona) values  ('2020-11-02','2020-12-02',1);
+insert into alquiler (fechaEntrega, Persona_idPersona) values  ('2020-12-02',12);
 
 select * from detallealquiler;
 alter table detallealquiler drop column DetalleAlquilercol;
@@ -64,6 +76,8 @@ insert into detallealquiler (Canciones_idCanciones,cantidadCanciones)  values (2
 insert into detallealquiler (Canciones_idCanciones,cantidadCanciones)  values (1,1);
 insert into detallealquiler (Canciones_idCanciones,cantidadCanciones)  values (3,1);
 insert into detallealquiler (Canciones_idCanciones,cantidadCanciones)  values (1,3);
+insert into detallealquiler (Alquiler_idAlquiler,Producto_idProducto) values (6,2); 
+insert into detallealquiler (Alquiler_idAlquiler,Producto_idProducto) values (6,1); 
 
 /*Consultar las canciones que fueron alquiladas en un alquiler*/
 select * from alquiler;
@@ -109,6 +123,8 @@ order by tipodocumento;
 select * from producto;
 select * from detallealquiler;
 
+delete from tipoNovedad where idtiponovedad=6;
+
 alter table detallealquiler drop column precio ;
 alter table detallealquiler add column total double;
 alter table detallealquiler add column idDetalleAlquiler int not null primary key auto_increment;
@@ -117,3 +133,19 @@ create table detalleAlquiler(
 idDetalleAlquiler int not null primary key auto_increment,
 Alquiler_idAlquiler int, foreign key (Alquiler_idAlquiler) references Alquiler(idAlquiler),
 Producto_idProducto int, foreign key (Producto_idProducto) references Producto(idProducto));
+
+alter table producto add column imagen varchar(225);
+delete from novedad where idNovedad =5;
+
+
+create table usuario(
+idUsuario int primary key auto_increment not null,
+username varchar(225),
+password varchar(225),
+estado tinyint
+);
+
+select * from usuario;
+
+insert into usuario values (1,"ADMIN","123",1);
+insert into usuario values (2,"USER","12345",1);

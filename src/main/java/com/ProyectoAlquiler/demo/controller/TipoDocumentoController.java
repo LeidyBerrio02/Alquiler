@@ -37,24 +37,30 @@ public class TipoDocumentoController {
 	List<TipoDocumento> td =tipoDocumentoService.listarDoc();
 	modelo.addAttribute("listaTipoDoc",td);
 	//objeto para crear nuevo tipo documento
-	TipoDocumento tDoc = new TipoDocumento();
-	modelo.addAttribute("tDoc",tDoc);
+	TipoDocumento tipoDocumento = new TipoDocumento();
+	modelo.addAttribute("tipoDocumento",tipoDocumento 	);
 		return "ListarTipoDocumento";
 	}
 	
 	@PostMapping("/CrearTD")
-	public String crear(@ModelAttribute("tDoc")@Valid TipoDocumento tipoDocumento) {
+	public String crear(@ModelAttribute("tipoDocumento")@Valid TipoDocumento tipoDocumento) {
 		tipoDocumentoService.crear(tipoDocumento);
 		return "redirect:/TipoDocumento";
 	}
 	
-	@PutMapping("/actualizar/{idTipoDocumento}")
-	public TipoDocumento actualizar(@PathVariable Long idTipoDocumento,@RequestBody TipoDocumento tipoDocumento) {
-		return tipoDocumentoService.actualizar(tipoDocumento, idTipoDocumento);
+	@GetMapping("/actualizar/{idtipodocumento}")
+	public String actualizar(Model modelo, TipoDocumento tipoDocumento) {
+		tipoDocumento = tipoDocumentoService.buscar(tipoDocumento);
+		modelo.addAttribute("tipoDocumento", tipoDocumento);
+		//mostrar lista
+		List<TipoDocumento> td =tipoDocumentoService.listarDoc();
+		modelo.addAttribute("listaTipoDoc",td);
+		 return "ListarTipoDocumento";
 	}	
 	
-	@DeleteMapping("/eliminar/{idTipoDocumento}")
-	public Boolean eliminar(@PathVariable Long idTipoDocumento) {
-		return tipoDocumentoService.eliminar(idTipoDocumento);
+	@GetMapping("/eliminar/{idTipoDocumento}")
+	public String eliminar(@PathVariable Long idTipoDocumento) {
+		 tipoDocumentoService.eliminar(idTipoDocumento);
+		 return "redirect:/TipoDocumento";
 	}
 }

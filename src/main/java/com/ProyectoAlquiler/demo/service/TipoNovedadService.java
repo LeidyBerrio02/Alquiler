@@ -7,7 +7,7 @@ public interface TipoNovedadService {
 
 	List<TipoNovedad> listar();
 	TipoNovedad crear(TipoNovedad novedad);
-	TipoNovedad actualizar(TipoNovedad novedad, Long idtiponovedad);
+	TipoNovedad buscar(TipoNovedad novedad);
 	Boolean eliminar(Long idtiponovedad);
 	String cantidad();
 }

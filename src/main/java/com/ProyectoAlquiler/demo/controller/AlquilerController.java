@@ -37,9 +37,10 @@ public class AlquilerController {
 		return alquilerService.actualizar(alquiler, idAlquiler);
 	}
 	
-	@DeleteMapping("/eliminar/{idAlquiler}")
-	public Boolean eliminar(@PathVariable Long idAlquiler) {
-		return alquilerService.eliminar(idAlquiler);
+	@GetMapping("/eliminar/{idAlquiler}")
+	public String eliminar(@PathVariable Long idAlquiler) {
+		 alquilerService.eliminar(idAlquiler);
+		 return "redirect:/Detalle";
 	}
 
 }

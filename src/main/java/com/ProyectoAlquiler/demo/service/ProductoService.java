@@ -8,7 +8,7 @@ public interface ProductoService {
 
 	List<Producto>  listarProd();
 	Producto crear(Producto producto);
-	Producto actualizar(Producto producto , Long idProducto);
+	Producto buscar(Producto producto);
 	Boolean eliminar(Long idProducto);
 	String cantidad();
 	

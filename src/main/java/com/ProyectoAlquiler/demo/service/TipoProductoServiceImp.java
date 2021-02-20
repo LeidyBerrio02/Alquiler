@@ -27,7 +27,7 @@ public class TipoProductoServiceImp implements TipoProductoService{
 		// TODO Auto-generated method stub
 		return tipoProductoRepository.save(tipoProducto);
 	}
-
+/*
 	@Override
 	public TipoProducto actualizar(TipoProducto tipoProducto, Long idTipoProducto) {
 		TipoProducto tipoProductoEnBD = tipoProductoRepository.findById(idTipoProducto).orElse(null);
@@ -38,11 +38,9 @@ public class TipoProductoServiceImp implements TipoProductoService{
 		}
 		
 		return tipoProductoRepository.save(tipoProductoEnBD);
-	}
-
-	@Override
+	}*/
+	
 	public Boolean eliminar(Long idTipoProducto) {
-		// TODO Auto-generated method stub
 		if(tipoProductoRepository.existsById(idTipoProducto)) {
 			tipoProductoRepository.deleteById(idTipoProducto);
 			return true;
@@ -54,6 +52,12 @@ public class TipoProductoServiceImp implements TipoProductoService{
 	public String cantidad() {
 		// TODO Auto-generated method stub
 		return tipoProductoRepository.cantidad();
+	}
+
+	@Override
+	public TipoProducto buscar(TipoProducto tipoProducto) {
+		// TODO Auto-generated method stub
+		return tipoProductoRepository.findById(tipoProducto.getIdTipoProducto()).orElse(null);
 	}
 
 }

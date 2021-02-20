@@ -54,14 +54,22 @@ public class NovedadController {
 		 return "redirect:/Novedad";
 	}
 	
-	@PutMapping("/actualizar/{idNovedad}")
-	public Novedad actualizarNovedad(@PathVariable Long idNovedad, @RequestBody Novedad novedad) {
-		return novedadService.actualizar(novedad, idNovedad);
+	@GetMapping("/actualizar/{idnovedad}")
+	public String actualizarNovedad(Model modelo, Novedad novedad) {
+		novedad = novedadService.buscar(novedad);
+		modelo.addAttribute("novedad",novedad);
+		List<TipoNovedad> listaTN = tipoNovedadService.listar();
+		modelo.addAttribute("listaTN", listaTN);
+		//para que pueda aparecer la lista
+		List<Novedad> lista = novedadService.listar();
+		modelo.addAttribute("listaNovedad",lista);
+		 return "ListarNovedad";
 	}
 
-	@DeleteMapping("eliminar/{idNovedad}")
-	public Boolean eliminar(@PathVariable Long idNovedad) {
-		return novedadService.eliminar(idNovedad);
+	@GetMapping("eliminar/{idnxovedad}")
+	public String eliminar(@PathVariable Long idNovedad) {
+		 novedadService.eliminar(idNovedad);
+		 return "redirect:/Novedad";
 	}
 	
 }

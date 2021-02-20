@@ -60,14 +60,19 @@ public class ProductoController {
 		 return "redirect:/Producto";
 	}
 	
-	@PutMapping("/actualizar/{idProducto}")
-	public Producto actualizar(@PathVariable Long idProducto,@RequestBody Producto producto) {
-		return productoService.actualizar(producto, idProducto);
+	@GetMapping("/actualizar/{idProducto}")
+	public String actualizar(Model modelo, Producto producto) {
+		 producto = productoService.buscar(producto);
+		 modelo.addAttribute("producto",producto);
+		 List<TipoProducto> tP = tipoProductoService.listar();
+			modelo.addAttribute("tipoProducto", tP);
+		 return "CrearProducto";
 	}	
 	
-	@DeleteMapping("/eliminar/{idProducto}")
-	public Boolean eliminar(@PathVariable Long idProducto) {
-		return productoService.eliminar(idProducto);
+	@GetMapping("/eliminar/{idProducto}")
+	public String eliminar(@PathVariable Long idProducto) {
+		 productoService.eliminar(idProducto);
+		 return "redirect:/Producto";
 	}
 	
 	

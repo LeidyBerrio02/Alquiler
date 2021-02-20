@@ -8,7 +8,8 @@ public interface TipoPersonaService {
 
 	List<TipoPersona> listarPer();
 	TipoPersona crear(TipoPersona tipoPersona);
-	TipoPersona actualizar(TipoPersona tipoPersona, Long idTipoPersona);
+	/*TipoPersona actualizar(TipoPersona tipoPersona, Long idTipoPersona);*/
+	TipoPersona buscar(TipoPersona tipoPersona);
 	Boolean eliminar(Long idTipoPersona);
 	String cantidad();
 	

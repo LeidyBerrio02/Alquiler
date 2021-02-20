@@ -12,6 +12,7 @@ public class TipoNovedad {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
+	@Column(name="idtiponovedad")
 	private Long idtiponovedad;
 
 	@Column(name="novedadN")
@@ -20,6 +21,8 @@ public class TipoNovedad {
 	@JsonIgnore
 	@OneToMany(mappedBy = "idtiponovedad" ,fetch = FetchType.EAGER)
 	private List<Novedad> novedad;
+
+	
 
 	public Long getIdtiponovedad() {
 		return idtiponovedad;

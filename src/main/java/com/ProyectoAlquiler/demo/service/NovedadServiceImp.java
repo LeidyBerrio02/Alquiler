@@ -25,14 +25,15 @@ public class NovedadServiceImp implements NovedadService{
 	}
 
 	@Override
-	public Novedad actualizar(Novedad novedad, Long idNovedad) {
-		Novedad novedadBD = novedadRespository.findById(idNovedad).orElse(null);
-		if(novedad != null) {
+	public Novedad buscar(Novedad novedad) {
+		
+		
+		/*if(novedad != null) {
 			novedadBD.setDescripcion(novedad.getDescripcion());
 			novedadBD.setIdtiponovedad(novedad.getIdtiponovedad());
-		}
+		}*/
 		
-		return novedadRespository.save(novedadBD);
+		return novedadRespository.findById(novedad.getIdnovedad()).orElse(null);
 	}
 
 	@Override

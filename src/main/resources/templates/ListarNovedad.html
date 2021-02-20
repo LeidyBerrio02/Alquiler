@@ -44,7 +44,10 @@
 					</ul></li>			
 			</ul>
 		</div>
-			<a href="/"><img src="static/img/icono.png" th:src="@{/img/icono.png}"></a>
+			<form method="POST" th:action="@{/logout}">
+					<a href="#" onclick="this.parentNode.submit();">
+					<img style=" width: 20px; height: auto;" src="static/img/icono.png" th:src="@{/img/icono.png}"></a>
+			</form>
 	</div>
 
 </nav>
@@ -53,16 +56,15 @@
 
 		<table class="table table-striped table-hover">
 			<thead>
-				<h4>Registro Novedad</h4>
 				<tr>
-					<th scope="col">Id novedad</th>
 					<th scope="col">Tipo Novedad</th>
 					<th scope="col">Descripcion</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="var: ${listaNovedad}">
-					<td th:text="${var.idnovedad}">
 					
 					<td> 
 		<th:block th:each="tipoNov: ${var.idtiponovedad}">
@@ -71,6 +73,15 @@
 					</td>
 					
 					<td th:text="${var.descripcion}">
+					
+					<td>
+					<a th:href="@{/Novedad/actualizar/{idnovedad}(idnovedad=${var.idnovedad})}" class="btn btn-warning"  th:text="Editar"></a>
+					<!-- <td><a th:href="@{/Persona/actualizar/{idPersona}(idPersona=${var.idPersona})}" class="btn btn-success" th:text="Editar"></a> -->
+					</td>
+					
+					<td>
+					<a th:href="@{/Novedad/eliminar/{idnovedad}(idnovedad=${var.idnovedad})}" class="btn btn-dark" th:text="Eliminar"></a>
+					</td>
 			</tbody>
 
 		</table>
@@ -78,6 +89,8 @@
 		
 		<div class="container">
 		<form th:action="@{/Novedad/crear}" th:object="${novedad}" class="form-control" method="POST">
+		<input type="hidden" name="idnovedad" th:field="*{idnovedad}">
+		
 		<label>Tipo Novedad</label>
 		
 		<select th:field="*{idtiponovedad}">

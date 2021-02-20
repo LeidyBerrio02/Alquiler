@@ -8,7 +8,7 @@ public interface TipoDocumentoService {
 
 	List<TipoDocumento> listarDoc();
 	TipoDocumento crear(TipoDocumento tipoDocumento);
-	TipoDocumento actualizar(TipoDocumento tipoDocumento, Long idTipoDocumento);
+	TipoDocumento buscar(TipoDocumento tipoDocumento);
 	Boolean eliminar(Long idTipoDocumento);
 	String cantidad();
 }

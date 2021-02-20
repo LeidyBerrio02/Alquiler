@@ -50,7 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     	.and()
     	.logout()
     	.permitAll()
-    	.logoutSuccessUrl("/login?logout");
+    	/*pagina a la que ira luego de cerrar session*/
+    	.logoutSuccessUrl("/index");
     }
     
     

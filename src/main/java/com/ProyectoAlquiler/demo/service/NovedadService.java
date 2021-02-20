@@ -11,7 +11,7 @@ public interface NovedadService {
 
 	List<Novedad> listar();
 	Novedad crear(Novedad novedad);
-	Novedad actualizar(Novedad novedad, Long idNovedad);
+	Novedad buscar(Novedad novedad);
 	Boolean eliminar(Long idNovedad);
 	String cantidad();
 }

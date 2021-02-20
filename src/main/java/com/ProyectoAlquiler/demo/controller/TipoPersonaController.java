@@ -45,14 +45,23 @@ public class TipoPersonaController {
 		return "redirect:/TipoPersona";
 	}
 	
-	@PutMapping("/actualizar/{idtipoPersona}")
-	public TipoPersona actualizar(@PathVariable Long idtipoPersona,@RequestBody TipoPersona tipoPersona) {
-		return tipoPersonaService.actualizar(tipoPersona,idtipoPersona);
+	@GetMapping("/actualizar/{idTipoPersona}")
+	public String actualizar(Model modelo, TipoPersona tpersona) {
+		tpersona = tipoPersonaService.buscar(tpersona);
+		 modelo.addAttribute("tpersona", tpersona);
+		 //poder mostrar la lista
+		 List<TipoPersona> tp = tipoPersonaService.listarPer();
+		 modelo.addAttribute("listaTipoPersona", tp);
+		 return "ListarTipoPersona";
 	}
 	
-	@DeleteMapping("/eliminar/{idtipoPersona}")
-	public Boolean eliminar(@PathVariable Long idtipoPersona) {
-		return tipoPersonaService.eliminar(idtipoPersona);
+	@GetMapping("/eliminar/{idTipoPersona}")
+	public String eliminar(@PathVariable Long idTipoPersona) {
+		 tipoPersonaService.eliminar(idTipoPersona);
+		 return "redirect:/TipoPersona";
 	}
 
+	
+	
+	
 }
